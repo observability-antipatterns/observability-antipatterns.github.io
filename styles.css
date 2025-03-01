@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Estilo geral para o resultado */
+.result {
+    background-color: #f4f4f4; /* Cor de fundo */
+    border: 1px solid #ccc; /* Borda ao redor de cada item */
+    margin: 10px 0; /* Espaço entre os itens */
+    padding: 10px; /* Espaço interno */
+    border-radius: 5px; /* Borda arredondada */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: background-color 0.3s ease; /* Efeito suave ao passar o mouse */
+}
+
+/* Estilo para quando o usuário passa o mouse */
+.result:hover {
+    background-color: #e2e2e2; /* Muda a cor de fundo ao passar o mouse */
+}
+
+/* Estilo para o título de categoria */
+.result strong {
+    font-size: 18px; /* Tamanho maior para a categoria */
+    color: #333; /* Cor do texto */
+    font-weight: bold; /* Negrito */
+}
+
+/* Estilo para o texto do antipadrão */
+.result p {
+    font-size: 14px; /* Tamanho de fonte menor para o corpo */
+    color: #666; /* Cor do texto do corpo */
+}
+
+/* Estilo para a lista vazia */
+#results p {
+    color: #f00; /* Cor vermelha para a mensagem de "não encontrado" */
+    font-size: 18px; /* Tamanho maior da fonte */
+    font-weight: bold; /* Negrito para chamar a atenção */
+}

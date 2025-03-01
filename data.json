@@ -1,0 +1,50 @@
+[
+    {
+        "antiPattern": "Excessive Alerts (Alert Spam)",
+        "category": "Alerts",
+        "context": "In systems with high variability or large volumes of data, alerts are often configured without considering operational reality. Many times, alerts are set too sensitively, generating a large number of notifications, even for normal or transient conditions.",
+        "problem": "Excessive alerts lead teams to ignore important notifications or fall into an 'alert fatigue' cycle, where alerts become so frequent and irrelevant that they lose effectiveness. This results in wasted engineer time investigating non-critical issues.",
+        "example": "A service monitoring request latency generates alerts for every small latency spike, even if it lasts only a few seconds and does not affect user experience. Engineers end up ignoring these alerts, leading to major failures going undetected.",
+        "recommendedSolution": [
+            "Adjust alert thresholds so they only trigger for truly critical situations.",
+            "Implement trend-based alerts instead of simple threshold-based alerts to avoid false positives.",
+            "Group similar alerts to reduce notification overload."
+        ],
+        "consequences": {
+            "positive": "+ Reduces unnecessary alert overload.",
+            "negative": "- May require reviewing alert thresholds and a more careful analysis of metrics."
+        }
+    },
+    {
+        "antiPattern": "Superficial Dashboards",
+        "category": "Dashboards",
+        "context": "Dashboards are often created to provide a quick overview of system health. However, it is common for these dashboards to be shallow, showing only basic metrics without context or relevant data for analysis.",
+        "problem": "Superficial dashboards do not provide the depth needed for problem resolution or continuous improvement. They may show only a 'snapshot' of the current state, without allowing detailed analysis of past events or correlation between different system components. This makes root cause analysis difficult and hinders well-informed decision-making.",
+        "example": "A performance monitoring dashboard displays only CPU and memory usage without showing data on latency, throughput, or failures in critical components. As a result, engineers cannot identify whether the system is experiencing performance issues beyond resource utilization.",
+        "recommendedSolution": [
+            "Design dashboards that include contextual and complete performance metrics such as latency, throughput, errors, and other key indicators.",
+            "Include information such as historical response times, external dependency metrics, and correlation between logs, metrics, and traces.",
+            "Enable drill-down functionality for deeper analysis, allowing engineers to quickly investigate issues."
+        ],
+        "consequences": {
+            "positive": "+ Provides a complete view of system health.",
+            "negative": "- May require additional time and effort to build more detailed and useful dashboards."
+        }
+    },
+    {
+        "antiPattern": "Outdated Infrastructure Monitoring",
+        "category": "Infrastructure Monitoring",
+        "context": "In dynamic or rapidly evolving environments, infrastructure monitoring often fails to keep up with changes. This commonly occurs when services and components are added or updated without adjusting or expanding monitoring accordingly.",
+        "problem": "If infrastructure monitoring is not regularly updated to reflect changes, the team may fail to detect issues or failures in new components. This results in a lack of visibility into critical infrastructure aspects and increases the risk of undetected failures.",
+        "example": "A new database instance is added to the infrastructure, but CPU, memory, and latency monitoring are not configured for it. When the instance begins experiencing performance issues, the engineering team does not receive alerts because the instance is not properly monitored.",
+        "recommendedSolution": [
+            "Ensure that any infrastructure changes are accompanied by a review of monitoring and metric collection.",
+            "Automate the inclusion of new resources in monitoring using tools like Terraform or Ansible, which can automatically adjust configurations.",
+            "Establish periodic review processes to ensure that monitored infrastructure remains up to date."
+        ],
+        "consequences": {
+            "positive": "+ Ensures that all critical infrastructure components are monitored.",
+            "negative": "- May require additional effort to keep monitoring aligned with infrastructure changes."
+        }
+    }
+]
