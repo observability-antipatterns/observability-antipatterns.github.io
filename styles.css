@@ -1,0 +1,175 @@
+/* Estilo geral para o resultado */
+.result {
+    background-color: #f4f4f4; /* Cor de fundo */
+    border: 1px solid #ccc; /* Borda ao redor de cada item */
+    margin: 2px; /* Diminui ainda mais o espaço entre os itens */
+    padding: 12px; /* Ajusta o padding para mais equilíbrio */
+    border-radius: 5px; /* Borda arredondada */
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+    transition: background-color 0.3s ease; /* Efeito suave ao passar o mouse */
+    display: flex;
+    flex-direction: column; /* Alinha o conteúdo verticalmente */
+    justify-content: space-between; /* Garante que o conteúdo tenha o espaço adequado */
+    height: auto; /* Ajusta a altura automaticamente com base no conteúdo */
+    width: 100%; /* Reduz a largura */
+    max-width: 250px; /* Define um limite máximo */
+    min-width: 150px;
+    box-sizing: border-box; /* Garante que o padding não afete o tamanho */
+    overflow: hidden; /* Garante que o texto não saia da caixa */
+}
+
+/* Estilo para quando o usuário passa o mouse */
+.result:hover {
+    background-color: #e2e2e2; /* Muda a cor de fundo ao passar o mouse */
+}
+
+/* Cores específicas para cada categoria */
+.general {
+    background-color: #f4f4f4; /* Azul claro para Logs */
+}
+
+.logs {
+    background-color: #eedbc9; /* Azul claro para Logs */
+}
+
+.metrics {
+    background-color: #d3ffd3; /* Amarelo suave para Metrics */
+}
+
+.traces {
+    background-color: #e6e6fa; /* Lavanda para Tracing */
+}
+
+.alerts {
+    background-color: #ffcccb; /* Vermelho claro para Alerts */
+}
+
+.dashboards {
+    background-color: #fffacd; /* Verde claro para Dashboards */
+}
+
+.metrics-traces {
+    background-color: #e0dbd4; /* Cor de fundo bege para Metrics-Traces */
+}
+
+.metrics-logs-traces {
+    background-color: #F0E68C; /* Cor de fundo "Khaki" para Metrics-Logs */
+}
+
+/* Estilo para o título de categoria */
+.result strong {
+    font-size: 20px; /* Aumenta o tamanho da fonte do título */
+    color: #333; /* Cor do texto */
+    font-weight: bold; /* Negrito */
+    margin-bottom: 5px; /* Diminui o espaço entre o título e o texto */
+}
+
+/* Estilo para o texto do antipadrão */
+.result p {
+    font-size: 16px; /* Aumenta o tamanho da fonte do corpo */
+    color: #666; /* Cor do texto do corpo */
+    margin-bottom: 5px; /* Diminui o espaço entre os parágrafos */
+    overflow: hidden; /* Garante que o texto não ultrapasse os limites da caixa */
+    text-overflow: ellipsis; /* Adiciona "..." se o texto for muito longo */
+    white-space: nowrap; /* Impede que o texto quebre a linha */
+}
+
+/* Estilo para a lista vazia */
+#results p {
+    color: #f00; /* Cor vermelha para a mensagem de "não encontrado" */
+    font-size: 20px; /* Tamanho maior da fonte */
+    font-weight: bold; /* Negrito para chamar a atenção */
+}
+
+/* Container de resultados: Flexbox para organizar em grid */
+#results {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a linha seguinte */
+    justify-content: flex-start; /* Garante que os itens comecem da esquerda e se ajustem */
+    gap: 5px; /* Adiciona um espaço menor entre os itens */
+}
+
+/* Estilo para a legenda */
+.categories-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.legend-item span:first-child {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    display: inline-block;
+    border-radius: 50%; /* Deixa os círculos arredondados */
+}
+
+/* Estilo para o campo de busca */
+#search {
+    width: 300px; /* Largura do campo de busca */
+    padding: 10px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    border: 1px solid #ccc; /* Cor da borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    outline: none; /* Remove o contorno padrão */
+    transition: border-color 0.3s ease; /* Transição suave para a borda */
+    margin-bottom: 20px; /* Espaço inferior */
+}
+
+/* Estilo para quando o campo de busca está focado */
+#search:focus {
+    border-color: #4caf50; /* Cor da borda quando o campo é focado */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Efeito de sombra ao focar */
+}
+
+/* Estilo para o texto do campo de busca */
+#search::placeholder {
+    color: #888; /* Cor do texto placeholder */
+    font-style: italic; /* Estilo itálico para o texto placeholder */
+}
+
+
+/* O modal é inicialmente invisível */
+.modal {
+    display: none; /* Não exibe o modal por padrão */
+    position: fixed;
+    z-index: 1; /* Coloca o modal na frente do conteúdo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo semitransparente */
+}
+
+/* O conteúdo do modal */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 60%; /* Tamanho do modal */
+    max-width: 600px; /* Largura máxima */
+}
+
+/* O botão de fechar */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Alterar a cor do botão de fechar ao passar o mouse */
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

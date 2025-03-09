@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observability Antipatterns</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <script src="script.js"></script>
+    <h1>A Catalog of Observability Antipatterns</h1>
+    <hr>
+
+    <!-- Legenda de categorias -->
+    <h3>Categories Legend</h3>
+    <div class="categories-legend">
+        <div class="legend-item">
+            <span class="logs"></span>
+            <span>Logs</span>
+        </div>
+        <div class="legend-item">
+            <span class="metrics"></span>
+            <span>Metrics</span>
+        </div>
+        <div class="legend-item">
+            <span class="traces"></span>
+            <span>Traces</span>
+        </div>
+        <div class="legend-item">
+            <span class="alerts"></span>
+            <span>Alerts</span>
+        </div>
+        <div class="legend-item">
+            <span class="dashboards"></span>
+            <span>Dashboards</span>
+        </div>
+        <div class="legend-item">
+            <span class="general"></span>
+            <span>General</span>
+        </div>
+    </div>
+
+    <h3>Filter the antipatterns</h3> <input type="text" id="search" placeholder="Enter a term ..."
+        onkeyup="filterResults()">
+    <div id="results"></div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modal-title">Title</h3>
+            <p id="modal-context">Content will be here...</p>
+            <p id="modal-problem">Content will be here...</p>
+            <p id="modal-example">Content will be here...</p>
+            <p id="modal-solution">Content will be here...</p>
+        </div>
+    </div>
+
+
+    <hr>
+    <h2>Introduction</h2>
+    <p>In modern systems, observability is one of the keys to successful and scalable operations. Having real-time
+        visibility into the system's performance and health is crucial, but it is often overlooked or implemented
+        incorrectly. The lack of context, fragmented data, and absence of correlation between logs, metrics, and traces
+        can be a major obstacle for operations and engineering teams. This catalog aims to provide a clear view of the
+        common mistakes that compromise observability and ensure that teams can quickly identify these antipatterns, fix
+        them, and improve the monitoring and failure diagnosis quality. The catalog is a practical guide for architects,
+        software engineers, and SREs (Site Reliability Engineers), enabling teams to ensure greater reliability and
+        performance of their systems.</p>
+
+    <h2>Objectives:</h2>
+    <p>This catalog aims to identify and document the main observable antipatterns found in software systems, especially
+        in distributed environments. With the increasing complexity of systems, observability has become essential to
+        ensure the stability, performance, and security of applications. However, improper practices often lead to
+        difficulties in detecting failures, analyzing incidents, and enabling continuous improvement.
+        By avoiding these antipatterns, engineering teams can reduce incident resolution time, improve the quality of
+        collected data, and facilitate diagnosing complex problems. This catalog serves as a guide to help identify
+        inadequate practices and apply more effective solutions.</p>
+
+    <h2>How to Use This Catalog</h2>
+    <p>This catalog is organized by main observability categories, including Logs, Metrics, Tracing, Alerts, Dashboards,
+        and Infrastructure Monitoring. Each antipattern is described in detail, including the context in which it
+        occurs, the problems it causes, practical examples, and recommended solutions to mitigate it.
+        When you find an antipattern that applies to your system, we recommend following the recommended solutions and
+        practices to fix it and prevent recurrence.</p>
+
+    <h2>Template</h2>
+
+    <h3>Antipattern Name</h3>
+    The name should be clear and objective, highlighting the main problem.
+    Example: "Excessive Alerts (Alert Spam)", "Superficial Dashboards", "Outdated Infrastructure Monitoring".
+
+    <h3>Category</h3>
+    Indicates the area of observability in which the antipattern occurs. Some common categories include:
+
+    <ul>
+        <li>Logs</li>
+        <li>Metrics</li>
+        <li>Tracing</li>
+        <li>Alerts</li>
+        <li>Dashboards</li>
+        <li>Infrastructure Monitoring</li>
+    </ul>
+
+    <h3>Context</h3>
+    Describes the typical situation where the antipattern appears. Explains why teams end up adopting this practice,
+    often without realizing the negative impact. It should help readers identify with the problem.
+
+    <h3>Problem</h3>
+    Explains what goes wrong when this antipattern occurs. The problem should be described clearly and objectively. It
+    can include negative impacts such as:
+    <ul>
+        <li>Difficulty in identifying issues</li>
+        <li>Increased investigation time for incidents</li>
+        <li>Overload of irrelevant alerts and metrics</li>
+    </ul>
+
+    <h3>Example</h3>
+    A real or fictional example that illustrates the antipattern. It could be a problematic log snippet, a misconfigured
+    alert, or a dashboard that doesn’t provide useful information. Ideally, it should be a concrete example that shows
+    the problem in action.
+
+    <h3>Recommended Solution</h3>
+    A list of actions to correct the antipattern. It can include best practices, useful tools, and adjustments to the
+    observability approach. The solution should be practical and applicable, without depending on very specific
+    contexts.
+
+    <h3>Consequences</h3>
+    Explains what changes after applying the recommended solution. It divides the consequences into positive (benefits
+    of the solution) and possible challenges (such as culture changes, tool adaptation, etc.).
+
+</body>
+
+</html>
