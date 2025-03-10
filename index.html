@@ -80,8 +80,8 @@
         inadequate practices and apply more effective solutions.</p>
 
     <h2>How to Use This Catalog</h2>
-    <p>This catalog is organized by main observability categories, including Logs, Metrics, Tracing, Alerts, Dashboards,
-        and Infrastructure Monitoring. Each antipattern is described in detail, including the context in which it
+    <p>This catalog is organized by main observability categories, including Logs, Metrics, Traces, Alerts, Dashboards,
+        and General. Each antipattern is described in detail, including the context in which it
         occurs, the problems it causes, practical examples, and recommended solutions to mitigate it.
         When you find an antipattern that applies to your system, we recommend following the recommended solutions and
         practices to fix it and prevent recurrence.</p>
@@ -89,47 +89,38 @@
     <h2>Template</h2>
 
     <h3>Antipattern Name</h3>
-    The name should be clear and objective, highlighting the main problem.
-    Example: "Excessive Alerts (Alert Spam)", "Superficial Dashboards", "Outdated Infrastructure Monitoring".
+    A concise and descriptive name for the anti-pattern.
+    Example: "Excessive Alerts".
 
     <h3>Category</h3>
-    Indicates the area of observability in which the antipattern occurs. Some common categories include:
+    The classification of the anti-pattern based on predefined categories:
 
     <ul>
         <li>Logs</li>
         <li>Metrics</li>
-        <li>Tracing</li>
+        <li>Traces</li>
         <li>Alerts</li>
         <li>Dashboards</li>
-        <li>Infrastructure Monitoring</li>
+        <li>General</li>
     </ul>
 
     <h3>Context</h3>
-    Describes the typical situation where the antipattern appears. Explains why teams end up adopting this practice,
-    often without realizing the negative impact. It should help readers identify with the problem.
+    A description of the scenario where the anti-pattern occurs, including common conditions that lead to its emergence.
 
     <h3>Problem</h3>
-    Explains what goes wrong when this antipattern occurs. The problem should be described clearly and objectively. It
-    can include negative impacts such as:
-    <ul>
-        <li>Difficulty in identifying issues</li>
-        <li>Increased investigation time for incidents</li>
-        <li>Overload of irrelevant alerts and metrics</li>
-    </ul>
+    The key issues caused by the anti-pattern and their impact on observability, troubleshooting, and system reliability.
 
     <h3>Example</h3>
-    A real or fictional example that illustrates the antipattern. It could be a problematic log snippet, a misconfigured
-    alert, or a dashboard that doesn’t provide useful information. Ideally, it should be a concrete example that shows
-    the problem in action.
+    A real-world or hypothetical example illustrating how the anti-pattern manifests in practice.
 
     <h3>Recommended Solution</h3>
-    A list of actions to correct the antipattern. It can include best practices, useful tools, and adjustments to the
-    observability approach. The solution should be practical and applicable, without depending on very specific
-    contexts.
+    Best practices and recommendations to mitigate or avoid the anti-pattern
 
     <h3>Consequences</h3>
-    Explains what changes after applying the recommended solution. It divides the consequences into positive (benefits
-    of the solution) and possible challenges (such as culture changes, tool adaptation, etc.).
+    <ul>
+        <li><strong>Positives</strong>: Benefits gained when addressing the anti-pattern properly.</li>
+        <li><strong>Challenges</strong>: Potential difficulties in implementing the recommended solutions, such as increased complexity or additional costs.</li>
+    </ul>
 
 </body>
 
