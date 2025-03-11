@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     var modal = document.getElementById("myModal");
-    var span = document.getElementsByClassName("close")[0];
 
     // Função para abrir o modal com o conteúdo da caixinha
     // Função para abrir o modal
@@ -101,10 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("modal-overlay").addEventListener("click", closeModal);
 
 
-    // Quando o usuário clicar no botão de fechar, o modal será fechado
-    span.onclick = function () {
-        modal.style.display = "none"; // Oculta o modal
-    }
+    document.querySelectorAll(".close").forEach(closeBtn => {
+        closeBtn.addEventListener("click", closeModal);
+    });
 
     // Quando o usuário clicar fora do modal, ele será fechado
     window.onclick = function (event) {
