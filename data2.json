@@ -1,32 +1,7 @@
 [
     {
-      "name": "Failure to Set the Correct Alerts and Thresholds",
-      "category": "Alerts",
-      "context": "The anti-pattern occurs when alerts are configured without proper criteria, resulting in inaccurate threshold settings. This can happen due to a lack of historical data analysis, the adoption of arbitrary values, or the use of default configurations that do not reflect the system's actual behavior. This issue can manifest in two main ways: overly restrictive thresholds, which generate a high volume of irrelevant alerts and lead to alert fatigue, or overly permissive thresholds, which fail to detect critical issues in a timely manner.",
-      "problem": "Incorrect alert and threshold configuration can lead to several negative impacts. First, it can result in the excessive generation of irrelevant alerts, causing alert fatigue, where the team becomes desensitized to notifications. This can lead to critical incidents being overlooked due to overly permissive thresholds, as the system fails to trigger alerts for important events. As a consequence, trust in the monitoring system diminishes, and important alerts may be ignored, further hindering effective response. Additionally, teams may end up spending excessive time and effort on constant manual adjustments to thresholds, reducing operational efficiency and increasing the chances of missing significant issues.",
-      "example": "An operations team configures an alert for CPU usage above 70% on any server. During normal workload peaks, this alert triggers frequently, causing engineers to start ignoring it. When a real issue occurs and a server reaches 100% CPU usage for an extended period, the alert does not receive the necessary attention, resulting in severe service degradation before corrective actions are taken.",
-      "recommended_solution": [
-        "Define alerts based on historical metric analysis and expected system behavior.",
-        "Use dynamic approaches, such as anomaly detection and event correlation, to avoid inappropriate fixed thresholds.",
-        "Prioritize actionable alerts, ensuring that each notification requires a clear and objective response.",
-        "Implement periodic reviews of alert configurations to adjust thresholds as operational conditions evolve.",
-        "Categorize alerts by severity to differentiate minor incidents from truly critical problems."
-      ],
-      "consequences": {
-        "positive": [
-          "Reduction in alert fatigue and improved response to critical incidents.",
-          "Increased reliability in monitoring, ensuring a quick reaction when necessary.",
-          "Optimization of the team's time by avoiding frequent and unnecessary alert adjustments."
-        ],
-        "challenges": [
-          "Requires an initial effort to analyze and properly define thresholds.",
-          "May require advanced tools for automatic anomaly detection and event correlation.",
-          "Ongoing review is necessary to adapt to system changes and workload variations."
-        ]
-      }
-    },
-    {
       "name": "Excessive Alerts",
+      "rank": 1,
       "category": "Alerts",
       "context": "The anti-pattern occurs when a monitoring system generates an overwhelming number of alerts, often due to redundant rules, lack of aggregation mechanisms, or excessive granularity in notifications. This results in alert fatigue, where engineers become desensitized to alerts and start ignoring notifications, including those that indicate critical issues. The root causes of this problem include poorly defined alerting policies, a lack of prioritization, and inadequate suppression or grouping strategies.",
       "problem": "An excessive number of alerts can lead to several issues, including alert fatigue, where engineers stop responding to alerts due to their overwhelming volume. As a result, the mean time to resolution (MTTR) increases, as critical alerts may get lost in the noise. Additionally, operational time is wasted handling low-priority or redundant alerts, diverting attention from more important issues. Furthermore, it becomes difficult to distinguish between minor issues and genuinely critical incidents, leading to potential delays in addressing significant problems.",
@@ -53,6 +28,7 @@
     },
     {
       "name": "Only Having Time-Series Graph-Based Dashboards",
+      "rank": 20,
       "category": "Dashboards",
       "context": "The anti-pattern occurs when monitoring dashboards rely exclusively on time-series graphs to present data. While time-series graphs are useful for visualizing trends over time, they are insufficient for providing a comprehensive view of system health. This issue arises when dashboards lack complementary visualization methods such as tables, heatmaps, topological maps, or alert summaries, making it difficult to extract actionable insights efficiently.",
       "problem": "Relying solely on time-series graphs can lead to several issues, including difficulty in correlating multiple data sources, such as logs, traces, and alerts. This approach may also limit the ability to detect anomalies that are not apparent in a time-series representation. Engineers face inefficient troubleshooting, as they must manually interpret trends instead of relying on more direct indicators. Additionally, the cognitive load increases when identifying patterns across different system components, making it harder to quickly identify and resolve issues.",
@@ -84,6 +60,7 @@
     },
     {
       "name": "Numerous Dashboards",
+      "rank": 4,
       "category": "Dashboards",
       "context": "The anti-pattern occurs when an organization accumulates an excessive number of dashboards, often without proper governance or consolidation. This situation typically arises when different teams create dashboards for similar purposes, when outdated dashboards are never retired, or when there is no clear strategy for dashboard management. As a result, users struggle to identify which dashboards are relevant and accurate, leading to inefficiencies in monitoring and troubleshooting.",
       "problem": "Having too many dashboards can lead to several issues, including difficulty in finding the correct dashboard for a given situation. This can also result in inconsistent or conflicting data across multiple dashboards, reducing trust in the monitoring system. Additionally, the maintenance overhead increases as outdated or redundant dashboards remain in use. Engineers may experience cognitive overload when navigating numerous dashboards to diagnose an issue, making it harder to effectively troubleshoot and respond to incidents.",
@@ -110,6 +87,7 @@
     },
     {
       "name": "Lazy Synthetic Transactions",
+      "rank": 30,
       "category": "General",
       "context": "This antipattern occurs when synthetic transactions are executed lazily, meaning they are only triggered on-demand or when specific conditions are met, rather than being executed continuously or at regular intervals. This behavior is common in systems that aim to reduce overhead or in environments with limited resources. Teams may adopt this practice to save resources, but without realizing that it compromises system coverage, leaving critical parts under-monitored.",
       "problem": "Lazy synthetic transactions may not cover all critical areas of the system continuously, which can result in undetected failures. The intermittent monitoring weakens the diagnostic capabilities and increases the time needed to identify and resolve incidents, making it difficult to detect issues that occur between verification periods.",
@@ -132,6 +110,7 @@
     },
     {
       "name": "Mandating Tools",
+      "rank": 31,
       "category": "General",
       "context": "This antipattern occurs when organizations or teams enforce the use of a specific tool or set of tools across their entire stack or organization, regardless of the unique needs or context of different teams or projects. It often arises from a desire to standardize processes, simplify tool management, or save on costs. While it can provide consistency, this practice can lead to inefficiencies when the mandated tools do not align with the specific requirements or workflows of certain teams.",
       "problem": "Mandating a single tool or platform can result in suboptimal performance, frustration, and inefficiency. Teams may be forced to work with tools that are ill-suited for their specific use cases, increasing operational complexity or decreasing productivity. It can also lead to resistance from team members, as they might prefer or need different tools to perform their tasks effectively.",
@@ -154,6 +133,7 @@
     },
     {
       "name": "Neglecting Data Retention",
+      "rank": 32,
       "category": "General",
       "context": "This antipattern occurs when organizations fail to properly manage the retention of observability data, such as logs, metrics, and traces. It can happen when teams do not define clear policies for how long data should be retained or when they do not actively monitor or adjust data retention periods. Often, this happens due to a lack of awareness of the impact of excessive or insufficient data retention, or simply because teams focus more on immediate needs rather than long-term data management.",
       "problem": "Neglecting data retention can lead to several issues, such as data loss, where critical logs or metrics may be deleted or become inaccessible before they are needed for troubleshooting or analysis. It can also result in excessive storage costs due to retaining data longer than necessary, leading to inefficient use of resources. Additionally, organizations may face difficulties in compliance, struggling to adhere to legal or regulatory requirements for data retention.",
@@ -178,6 +158,7 @@
     },
     {
       "name": "Positioning Observability as a Tool to Use During Issues and Incidents Only",
+      "rank": 24,
       "category": "General",
       "context": "This antipattern arises when organizations or teams treat observability tools (such as logging, metrics, and tracing) as tools to be used only during active issues or incidents. Observability is often seen as a reactive tool, meant to help resolve problems after they arise, rather than as a proactive mechanism for maintaining system health and performance. This view can result in underutilization of observability capabilities, missing out on early detection of issues or trends that could prevent future incidents.",
       "problem": "When observability is viewed only as a reactive tool for incidents, it can lead to missed opportunities for proactive monitoring, where early signs of system degradation or emerging issues go unnoticed until they escalate. This approach also increases the mean time to detection (MTTD), as teams may lack the visibility needed to identify problems before they impact users or the system. Additionally, it results in a lack of performance optimization, as observability tools are not leveraged to improve system efficiency, leading to missed performance gains.",
@@ -202,6 +183,7 @@
     },
     {
       "name": "Environment Inconsistency",
+      "rank": 21,
       "category": "General",
       "context": "Environment inconsistency occurs when there are differences between development, staging, and production environments, which can lead to unpredictable behavior of applications or systems. These discrepancies might involve differences in configurations, versions of libraries or dependencies, or even infrastructure setups. Teams may overlook or neglect to properly replicate production-like environments for testing, leading to situations where an application works in one environment but fails in another.",
       "problem": "When environments are inconsistent, the risk of deployment failures increases, as changes that work in staging or development may fail in production due to hidden differences. This inconsistency also makes it harder to reproduce issues, complicating debugging and delaying incident resolution. Additionally, teams waste time and resources troubleshooting avoidable problems, leading to a higher mean time to resolution (MTTR).",
@@ -226,6 +208,7 @@
     },
     {
       "name": "Not Understanding Your Ecosystem",
+      "rank": 6,
       "category": "General",
       "context": "This antipattern occurs when teams fail to gain a deep understanding of their own system or application ecosystem. This includes failing to grasp the relationships between various services, components, or dependencies, and the behavior of the system as a whole. Teams may focus too much on individual components without considering how changes affect the broader system, or they might neglect to monitor interactions between services, making it difficult to anticipate how one part of the system will behave in different conditions.",
       "problem": "When teams don't understand their ecosystem, they face an increased risk of system failures, as changes in one part of the system can cause unforeseen consequences elsewhere. Troubleshooting becomes inefficient, with longer resolution times due to a lack of visibility into system interactions. Additionally, poor optimization opportunities arise, as teams miss chances to improve performance, scalability, and reliability. Inconsistent behavior may also emerge, leading to discrepancies between staging and production environments or unexpected responses under load.",
@@ -250,30 +233,32 @@
     },
     {
       "name": "Hoarding Data",
-        "category": "General",
-        "context": "The antipattern occurs when different teams within an organization maintain their own observability platforms or datasets without sharing them with other teams. This often happens due to lack of trust, fear of failure, or simple resistance to change. This behavior creates communication and collaboration barriers between teams, hindering problem resolution and continuous system improvement.",
-        "problem": " When observability data is not shared, it leads to a lack of transparency, preventing teams from having a clear view of the system as a whole, which results in inaccurate diagnostics and longer incident resolution times. The absence of data sharing also makes problem-solving ineffective, as teams lack access to the necessary information to resolve issues in distributed or complex systems. It can foster distrust between teams, damaging relationships and collaboration. Additionally, without information flow, the organization's ability to quickly identify areas for improvement is hindered, ultimately compromising system performance.",
-        "example": "A platform engineering team maintains its own logging and metrics solution and does not share this information with other teams such as operations or security. As a result, when a problem occurs in production, no one has access to the full data needed to investigate the issue, and the solution is delayed while teams search for isolated information in their own platforms.",
-        "recommended_solution": [
-          "Promote a culture of sharing: Encourage transparency and collaboration across teams, ensuring that everyone has access to relevant observability data.",
-          "Centralize data: Use a centralized observability platform where all data (logs, metrics, traces) can be easily accessed and analyzed by any team.",
-          "Foster trust: Work to remove cultural barriers that prevent data sharing and promote a more collaborative and open environment.",
-          "Continuous training: Offer training for teams on how to work with observability data in a safe and efficient manner."
+      "rank": 22,
+      "category": "General",
+      "context": "The antipattern occurs when different teams within an organization maintain their own observability platforms or datasets without sharing them with other teams. This often happens due to lack of trust, fear of failure, or simple resistance to change. This behavior creates communication and collaboration barriers between teams, hindering problem resolution and continuous system improvement.",
+      "problem": " When observability data is not shared, it leads to a lack of transparency, preventing teams from having a clear view of the system as a whole, which results in inaccurate diagnostics and longer incident resolution times. The absence of data sharing also makes problem-solving ineffective, as teams lack access to the necessary information to resolve issues in distributed or complex systems. It can foster distrust between teams, damaging relationships and collaboration. Additionally, without information flow, the organization's ability to quickly identify areas for improvement is hindered, ultimately compromising system performance.",
+      "example": "A platform engineering team maintains its own logging and metrics solution and does not share this information with other teams such as operations or security. As a result, when a problem occurs in production, no one has access to the full data needed to investigate the issue, and the solution is delayed while teams search for isolated information in their own platforms.",
+      "recommended_solution": [
+        "Promote a culture of sharing: Encourage transparency and collaboration across teams, ensuring that everyone has access to relevant observability data.",
+        "Centralize data: Use a centralized observability platform where all data (logs, metrics, traces) can be easily accessed and analyzed by any team.",
+        "Foster trust: Work to remove cultural barriers that prevent data sharing and promote a more collaborative and open environment.",
+        "Continuous training: Offer training for teams on how to work with observability data in a safe and efficient manner."
+      ],
+      "consequences": {
+        "positive": [
+          "Improved collaboration: Teams that share data have better communication and collaboration, leading to more effective performance.",
+          "Faster incident resolution: With shared access to data, teams can resolve issues faster and more accurately.",
+          "Increased trust: Data sharing builds a more trustworthy and transparent work environment, improving organizational culture."
         ],
-        "consequences": {
-          "positive": [
-            "Improved collaboration: Teams that share data have better communication and collaboration, leading to more effective performance.",
-            "Faster incident resolution: With shared access to data, teams can resolve issues faster and more accurately.",
-            "Increased trust: Data sharing builds a more trustworthy and transparent work environment, improving organizational culture."
-          ],
-          "challenges": [
-            "Cultural resistance: Changing a culture accustomed to isolating data can be challenging and time-consuming.",
-            "Ensuring security and compliance: Ensuring that sensitive data, such as customer information, is handled appropriately during the sharing process."
-          ]
-        }
+        "challenges": [
+          "Cultural resistance: Changing a culture accustomed to isolating data can be challenging and time-consuming.",
+          "Ensuring security and compliance: Ensuring that sensitive data, such as customer information, is handled appropriately during the sharing process."
+        ]
+      }
     },
     {
       "name": "One Size Fits All",
+      "rank": 23,
       "category": "General",
       "context": "The \"One Size Fits All\" antipattern occurs when organizations try to apply a single, uniform solution, tool, or approach across the entire system or organization without considering the unique needs of different teams, services, or use cases. This typically happens when there's a push for standardization or cost reduction, but the solution fails to meet the diverse requirements of various teams. While the goal is often to simplify processes or reduce overhead, it can lead to inefficiencies, frustration, and suboptimal performance.",
       "problem": "When a single solution is applied universally, it leads to a lack of flexibility, as different teams or systems may have unique needs that aren't met by the one-size-fits-all approach, resulting in workarounds or inefficiencies. This can cause suboptimal performance, as tools or practices that work well for one team might not be effective for others, wasting resources. Teams may also resist adopting tools or approaches that don’t suit their workflows, reducing collaboration. Additionally, the approach prevents missed opportunities for optimization, as different parts of the system could benefit from specialized tools or practices.",
@@ -298,6 +283,7 @@
     },
     {
       "name": "Lack of Instrumentation Guidelines for New Services",
+      "rank": 12,
       "category": "General",
       "context": "This antipattern occurs when organizations fail to establish clear and consistent guidelines for instrumenting new services with the necessary observability practices (logging, metrics, tracing, etc.). As a result, new services are often built without the proper instrumentation, or with inconsistent levels of observability. This can happen when there is no formal onboarding process for observability, or when individual teams take different approaches to instrumentation, leading to gaps in monitoring and difficulties in maintaining system-wide visibility.",
       "problem": "When there are no clear instrumentation guidelines, it leads to inconsistent observability, as some services may be well-instrumented while others lack sufficient visibility, making it difficult to monitor the overall system. This can delay issue detection, as problems in new services may go unnoticed for longer, increasing resolution times and user impact. Debugging becomes harder when services aren’t consistently instrumented, due to insufficient data to understand system behavior. Additionally, teams may face increased overhead in troubleshooting, having to retroactively add instrumentation to new services, which wastes time and delays issue resolution.",
@@ -323,6 +309,7 @@
     },
     {
       "name": "Using Too Many Tools",
+      "rank": 7,
       "category": "General",
       "context": "This antipattern occurs when an organization or team adopts an excessive number of tools to solve similar or overlapping problems without fully evaluating whether the tools are necessary or complementary. This often results from the desire to try every new technology or the lack of coordination between teams, leading to redundancy and inefficiency. While it's tempting to integrate a new tool for every issue, using too many tools can overwhelm teams, increase complexity, and create difficulties in maintaining and managing systems.",
       "problem": "When too many tools are used, it increases operational overhead, as managing a large number of tools adds administrative tasks such as configuration, monitoring, and maintenance, diverting teams from focusing on solving actual problems. Integration issues may arise when tools don’t work well together or require complex integrations, resulting in fragmented observability and difficulty correlating data from different sources. The learning curve also becomes steeper, as teams must spend extra time learning and managing multiple tools, leading to inefficiencies and a lack of deep expertise in any single tool. Additionally, using overlapping tools can result in higher costs, wasting investment in both software licenses and resources.",
@@ -348,6 +335,7 @@
     },
     {
       "name": "Neglecting Regular Maintenance",
+      "rank": 13,
       "category": "General",
       "context": "This antipattern occurs when teams or organizations fail to perform regular maintenance on their observability systems, such as updating tools, cleaning up old data, or reviewing configurations. It may happen when teams prioritize immediate issues over long-term system health, leading to gradual degradation. Neglecting maintenance can result from a lack of time, unclear responsibilities, or a reactive rather than proactive mindset toward system upkeep.",
       "problem": "When regular maintenance is neglected, it leads to decreased system reliability, as outdated software, configurations, or infrastructure can cause unexpected failures, performance degradation, or security vulnerabilities. Troubleshooting time increases as problems may go unnoticed or become harder to diagnose due to outdated tools and systems. Resources are wasted by retaining unnecessary data, unused tools, or configurations, leading to inefficient use of storage and computational resources. Over time, systems can become fragmented, with inconsistent data, configurations, or tool versions across teams. Neglecting maintenance also leaves systems vulnerable to security risks, potentially leading to data breaches or performance issues.",
@@ -374,6 +362,7 @@
     },
     {
       "name": "Observability for Production Only",
+      "rank": 14,
       "category": "General",
       "context": "This antipattern occurs when organizations focus their observability efforts exclusively on production environments, neglecting non-production environments such as staging, testing, or development. While it is essential to have comprehensive observability in production for detecting and resolving real-time issues, limiting observability to production only can result in missing critical problems before they reach production. This approach is often driven by resource constraints, a lack of awareness, or the mistaken belief that issues are less likely to occur in non-production environments.",
       "problem": "When observability is only applied to production, it increases the risk of issues reaching production, as problems that could have been caught early in development or staging remain undetected, escalating to production where they are harder and costlier to fix. Debugging becomes inefficient, as issues discovered in production lack prior insight from testing or staging environments, making troubleshooting more time-consuming and complex. Without consistent observability in non-production environments, teams may miss opportunities to optimize services before release, resulting in lower-quality launches. This also leads to frustration for developers and testers, who lack visibility into system performance and behavior in their environments.",
@@ -399,59 +388,8 @@
       }
     },
     {
-      "name": "Throwing Tools at a Problem",
-      "category": "General",
-      "context": "This antipattern occurs when organizations or teams try to solve complex problems or improve observability by adopting numerous tools without a clear understanding of the underlying issue or a comprehensive strategy. This approach often stems from the belief that acquiring the latest tools will automatically resolve issues, without properly analyzing the root cause or ensuring the tools are well integrated into the existing systems. This can lead to tool sprawl, where multiple redundant or incompatible tools are used, making the problem worse instead of improving the situation.",
-      "problem": "When teams rely on throwing tools at problems, it leads to tool sprawl, with too many tools being implemented, often overlapping in functionality, creating unnecessary complexity and maintenance overhead. Poor integration between tools can cause fragmentation in the observability ecosystem, making it difficult to correlate data or gain insights across the system. Instead of addressing the root cause of issues, organizations may invest in a patchwork of tools, leading to wasted time and resources. Managing multiple tools with varying configurations, data formats, and support requirements increases operational overhead, confusion, and inefficiency. This also results in tool fatigue, where teams become overwhelmed by the number of tools they must manage and learn, reducing the overall effectiveness of observability practices.",
-     "example": "A team facing inconsistent performance in a system decides to resolve the issue by adding new monitoring, tracing, and alerting tools. They implement a separate tool for infrastructure monitoring, application performance monitoring (APM), and log aggregation, all of which overlap in some aspects. These tools don't integrate well, leading to duplicated data, fragmented views of the system, and difficulty in correlating performance issues across the different tools. As a result, the performance problem remains unsolved, and the team is left managing multiple systems without clear insights.",
-      "recommended_solution": [
-        "Diagnose the root cause: Before adopting any new tools, take the time to identify the real issue and evaluate whether it can be solved with the tools you already have or by making minor adjustments to existing processes.",
-        "Consolidate tools where possible: Instead of adding new tools for every issue, look for tools that provide comprehensive solutions that integrate well with existing systems, reducing complexity and overlap.",
-        "Focus on strategy, not just tools: Develop an observability strategy that aligns with organizational goals and addresses the core needs of the team, whether that's improving alerting, better tracing, or centralized logging.",
-        "Evaluate tools carefully: When introducing new tools, ensure they align with your overall observability strategy and integrate seamlessly with other tools already in use.",
-        "Train and empower teams: Rather than simply adding more tools, invest in training and empowering your teams to use the tools effectively, ensuring they understand the value each tool brings to the table."
-      ],
-      "consequences": {
-        "positive": [
-          "Simplified observability: By reducing tool sprawl and consolidating functionality, teams can focus on solving issues rather than managing numerous, redundant systems.",
-          "Better tool integration: Fewer tools with better integration lead to more cohesive observability and faster root cause analysis.",
-          "Improved efficiency: A clearer focus on solving problems and using the right tools for the job reduces wasteful spending and operational overhead.",
-          "Stronger alignment with business needs: A well-thought-out strategy ensures tools are used to meet organizational goals, making observability more effective and impactful."
-        ],
-        "challenges": [
-          "Initial time investment to analyze the root causes of issues and create a strategy may be seen as time-consuming, especially in fast-paced environments.",
-          "Resistance to changing tools from teams who are accustomed to their existing tools or workflows, requiring careful change management."
-        ]
-      }
-    },
-    {
-      "name": "Lack of System-Wide Perspective",
-      "category": "General",
-      "context": "This antipattern occurs when teams or organizations focus on monitoring or observing isolated components or services without considering the entire system as a whole. While individual components are essential to monitor, neglecting the interactions and dependencies between them can result in blind spots in system behavior and performance. This often happens due to siloed teams, limited tooling, or an overly narrow focus on specific metrics without understanding their role within the larger system.",
-      "problem": "When there is a lack of system-wide perspective, it leads to missed correlations, as teams fail to recognize critical relationships between services, dependencies, or events, resulting in an incomplete understanding of issues. Troubleshooting becomes fragmented and inefficient, with teams focusing on individual parts without realizing they are part of a larger problem. Root cause analysis is slow, as teams have limited visibility into the broader system, leading to longer resolution times. Resources may be inefficiently allocated, addressing symptoms rather than the root cause or optimizing overall performance. Additionally, inconsistent monitoring coverage means some parts of the system may be over-monitored while others are under-monitored, resulting in incomplete or misleading data about the system's health.",
-      "example": "A team focuses heavily on monitoring the performance of a specific microservice, tracking metrics like response times and error rates. However, they don't track how this microservice interacts with other services in the ecosystem. When an issue arises with a downstream service that the team doesn't monitor closely, the team fails to see the correlation between the microservice's errors and the issues in the downstream service. This leads to longer troubleshooting times and a lack of clarity around the root cause.",
-      "recommended_solution": [
-        "Implement end-to-end monitoring: Ensure that all components of the system, including microservices, databases, and external dependencies, are monitored and observed. Integrate tracing and correlation across all services to capture the full system flow.",
-        "Focus on service dependencies: Be sure to map and monitor the dependencies between services, applications, and infrastructure, allowing teams to trace how one failure can propagate through the system.",
-        "Establish system-wide dashboards: Create comprehensive dashboards that bring together data from different components to give a complete view of system health, performance, and critical metrics.",
-        "Integrate observability practices across teams: Encourage cross-functional teams (e.g., developers, SREs, ops) to collaborate on defining what is monitored, ensuring that every team has visibility into the complete system.",
-        "Ensure tool interoperability: Use tools that provide a holistic view and can integrate data from various sources, ensuring visibility across the entire stack and ecosystem."
-      ],
-      "consequences": {
-        "positive": [
-          "Faster root cause identification: With a system-wide perspective, teams can quickly identify how different components interact and pinpoint the true source of issues.",
-          "Improved collaboration: Cross-functional teams are better able to communicate and resolve issues because they have a shared understanding of the entire system.",
-          "Optimized performance: By considering the system as a whole, teams can better allocate resources, prioritize improvements, and ensure the system is running efficiently across all components.",
-          "Enhanced troubleshooting: Teams can solve complex issues more effectively by seeing the full picture and not getting stuck in narrow, component-focused troubleshooting."
-        ],
-        "challenges": [
-          "Increased complexity: Implementing system-wide observability can require more sophisticated tools, integrations, and configurations, which can be challenging in large or complex environments.",
-          "Higher overhead: Maintaining a broad view of the system may introduce additional monitoring and data processing overhead, which needs to be managed carefully to avoid performance degradation."
-        ]
-      }
-    },
-    {
       "name": "Lack of Contextual Information",
+      "rank": 5,
       "category": "General",
       "context": "This antipattern occurs when the data captured by observability tools, such as logs, metrics, or traces, lacks sufficient context to help teams understand the full scope of the situation. Without relevant contextual information, it becomes difficult to interpret the data correctly, leading to confusion, slower troubleshooting, and missed opportunities for proactive problem resolution. This can arise when logs or metrics are not detailed enough, or when important relationships and metadata (such as request IDs, user sessions, or service dependencies) are not captured.",
       "problem": "When there is a lack of contextual information, several issues arise: difficulty in understanding the situation, as teams may struggle to determine the cause and impact of issues due to insufficient context; inefficient troubleshooting, since logs or metrics without sufficient details (such as session data or trace IDs) make diagnosing root causes time-consuming and error-prone; lost opportunities for proactive action, as teams cannot detect early warning signs or anticipate failures, leading to reactive rather than proactive monitoring; fragmented investigation, where investigators must cross-reference multiple data sources or manually reconstruct context, delaying resolution and increasing the risk of missing critical information; and inconsistent alerts, where alerts lacking contextual details may result in false positives or missed critical issues, contributing to alert fatigue and slower response times.",
@@ -480,6 +418,7 @@
     },
     {
       "name": "Failure to Monitor Error Logs",
+      "rank": 33,
       "category": "Logs",
       "context": "This antipattern arises when teams or organizations neglect to monitor error logs or fail to set up proper alerts for errors in the system. Error logs contain crucial information about system failures, exceptions, and unexpected behaviors, but if they aren't actively monitored or analyzed, potential issues can go unnoticed, leading to downtime, user impact, and difficulty in resolving incidents. This can occur when teams assume that errors will be automatically detected, or when there's an over-reliance on other monitoring signals (e.g., metrics or traces) that don't capture all failure modes.",
       "problem": "When error logs are not actively monitored, critical incidents can be missed, resulting in undetected failures that lead to system outages, degraded performance, or poor user experiences. Without proper monitoring, issues that should be flagged by error logs may go unnoticed for extended periods, increasing recovery times. Error logs provide vital clues for root cause analysis, and without monitoring, pinpointing the cause of problems becomes more difficult, prolonging troubleshooting and resolution. This also increases the mean time to recovery (MTTR), as errors that go unnoticed or are identified too late lead to longer recovery times, affecting system reliability. Finally, teams can become overwhelmed when errors accumulate in logs, as they may be faced with large volumes of data to investigate later, leading to delays and poor performance in addressing incidents.",
@@ -508,6 +447,7 @@
     },
     {
       "name": "Using API Access Logs for Troubleshooting",
+      "rank": 26,
       "category": "Logs",
       "context": "This antipattern occurs when teams rely on API access logs (such as HTTP request logs) to troubleshoot issues without incorporating deeper diagnostic tools like application logs, error logs, or distributed tracing. While API access logs are useful for tracking request traffic and basic information (such as response status codes, timestamps, and request paths), they often lack the necessary context and detail to diagnose complex issues like application bugs, service failures, or performance bottlenecks. Relying solely on these logs can lead to incomplete or inaccurate troubleshooting.",
       "problem": "When teams use only API access logs for troubleshooting, it results in limited diagnostic value, as these logs typically provide only surface-level data (e.g., request paths, status codes) and miss deeper insights about internal application logic, errors, or performance bottlenecks. Identifying root causes becomes difficult, as API access logs may indicate issues like high error rates or slow responses but lack the detailed stack traces, exceptions, or context needed to understand why the issue occurred. Additionally, service dependencies are often overlooked, as API access logs do not capture how services interact with each other. Without a holistic view, such as distributed tracing, teams may miss issues from service dependencies, network latencies, or external integrations. This can lead to incomplete investigations, where teams miss critical context or fail to see whether other services or resources were involved. Finally, relying on API access logs alone can give teams a false sense of confidence, leading them to overlook important contributing factors to the problem.",
@@ -535,6 +475,7 @@
     },
     {
       "name": "Improper Log Level Usage",
+      "rank": 25,
       "category": "Logs",
       "context": "This antipattern arises when logs are generated with inappropriate log levels, such as using INFO for critical errors or DEBUG for general application flow. Log levels, like ERROR, WARN, INFO, and DEBUG, are meant to signal the severity or importance of events. However, teams often misuse log levels by setting them too low (e.g., logging critical errors as INFO) or too high (e.g., logging routine information as ERROR). This misclassification leads to confusion, excessive log volume, and makes it difficult to identify the severity of issues quickly, especially when reviewing logs during incidents or troubleshooting.",
       "problem": "When log levels are used improperly, several issues arise. Critical errors can become buried in noise if important issues like system failures or application crashes are logged at low verbosity levels (e.g., INFO or DEBUG). This may cause teams to overlook these events or fail to prioritize them correctly. Excessive logging of non-essential events at high verbosity levels (such as logging DEBUG for every request or response) leads to alert fatigue, as teams are overwhelmed with notifications for irrelevant events. Additionally, inconsistent logging practices make it difficult to establish a clear structure for interpreting logs, increasing the time spent trying to understand logs during incidents. Improper log level usage also results in missed opportunities for proactive monitoring, as important events may not trigger alerts, preventing teams from identifying and addressing problems before they escalate. Finally, troubleshooting becomes inefficient, as teams must sift through large volumes of unnecessary log data to find the root cause of issues.",
@@ -562,6 +503,7 @@
     },
     {
       "name": "Lack of Structured Logging",
+      "rank": 16,
       "category": "Logs",
       "context": "This antipattern occurs when logs are written in an unstructured or free-text format, which makes it difficult to search, analyze, and correlate log entries across systems. Unstructured logs often consist of plain text messages with minimal context or metadata, making them harder to process programmatically. This happens when teams fail to implement structured logging, where logs are output in a consistent, machine-readable format (e.g., JSON, key-value pairs). The lack of structure increases the time and effort required to extract meaningful insights from logs, especially in complex systems or during incident response.",
       "problem": "When logs are not structured, they become difficult to search and analyze efficiently, as unstructured logs often consist of free-text entries that make it challenging to find specific events or patterns. This requires manual parsing or using regular expressions, which is time-consuming and error-prone. Without structured logs, automation tools (e.g., alerting systems, log aggregation platforms) cannot easily parse or analyze log data, missing opportunities for proactive monitoring or automated remediation. The lack of structure also leads to inconsistent logging practices, where each log message follows a different format or contains inconsistent information, making it hard to correlate logs across services or systems. This increases operational overhead, as teams must spend more time manually sifting through logs to find relevant information, which creates inefficiencies during both routine operations and incident investigations. Finally, the absence of structure impairs incident response, as it becomes more difficult to quickly identify key pieces of information, delaying the investigation and recovery process.",
@@ -590,6 +532,7 @@
     },
     {
       "name": "Duplicate Logs",
+      "rank": 15,
       "category": "Logs",
       "context": "This antipattern arises when the same log message is generated multiple times across different parts of a system, often due to misconfiguration or incorrect logging practices. Duplicate logs can occur in various scenarios, such as when the same event is logged by multiple services, components, or layers within an application. It can also happen when logs are produced at different log levels or by redundant logging mechanisms. This redundancy causes unnecessary log volume, which leads to increased storage and processing costs, as well as making log analysis more difficult by adding noise to the data.",
       "problem": "When duplicate logs are generated, it leads to increased log volume, as unnecessary duplicate entries consume more storage space and require additional resources to process, store, and analyze. The presence of duplicate logs causes log fatigue, as teams become overwhelmed by the sheer volume of log entries, making it harder to identify meaningful information and increasing the likelihood that significant events get overlooked. Duplicate logs can also distort analysis and metrics, leading to inaccurate reports, trends, or failure to identify genuine issues because the same log message is counted multiple times. During incident investigation, duplicate logs slow down troubleshooting and root cause analysis, as teams must sift through multiple identical entries instead of focusing on unique, actionable logs. Finally, generating and storing duplicate logs wastes valuable system resources, increasing costs for log storage and processing, especially in large, distributed environments.",
@@ -618,6 +561,7 @@
     },
     {
       "name": "Local Logging Only",
+      "rank": 9,
       "category": "Logs",
       "context": "This antipattern occurs when logs are generated and stored only locally within individual services, rather than being aggregated or centralized in a single location for the entire system. Services may log events to local disk files or local logging systems that aren't accessible by other parts of the infrastructure. This practice is often a result of poor design or lack of centralized logging policies, where teams assume local logs are sufficient for troubleshooting and monitoring. However, it causes significant challenges in large-scale systems, where visibility and traceability across services are essential.",
       "problem": "When logs are stored locally only, visibility is limited because logs are isolated to individual machines or services, making it difficult to get a holistic view of the system. This lack of centralization hinders the ability to correlate events across multiple services or identify system-wide issues. During incidents, troubleshooting becomes difficult as teams have to manually access logs from different locations, which is both time-consuming and error-prone. If logs are stored locally, they also lack redundancy and can be lost in the event of a system failure, potentially leaving crucial logs missing and impeding diagnosis. Moreover, without centralized storage, log data cannot be easily ingested into monitoring or alerting systems, meaning critical events, anomalies, or trends may go unnoticed. Finally, in regulated environments, storing logs locally creates compliance and auditing challenges, as centralized logging is often required for data retention, security, and access control.",
@@ -646,6 +590,7 @@
     },
     {
       "name": "Excessive Logs",
+      "rank": 8,
       "category": "Logs",
       "context": "This antipattern occurs when systems log too much information, often at too granular a level. While logging is essential for understanding system behavior, excessive logs can flood the system with unnecessary data that obscures valuable insights. This can happen when teams log every minor action, detail, or event, often due to a lack of log level management or poor logging practices. It can also occur when logs are configured to capture every piece of information during development or debugging stages and never properly adjusted for production environments.",
       "problem": "When excessive logs are generated, storage costs increase due to the need to store large amounts of log data that may not provide significant value. This can also degrade performance, especially if logs are written synchronously or contain resource-intensive data. Excessive logging creates noise in the log data, making it harder to extract meaningful insights, which delays incident response and troubleshooting as important logs can be lost in the flood of trivial details. Additionally, the large volume of logs makes it difficult to analyze and identify trends, anomalies, or issues, as teams must sift through excessive data to find relevant information. Log management systems can become strained by the overwhelming amount of data, leading to slower query performance, missed alerts, and difficulty in extracting actionable insights. Finally, operational inefficiency arises as teams spend time filtering out unnecessary logs or managing large volumes of data instead of focusing on actual problems or system improvements.",
@@ -676,6 +621,7 @@
     },
     {
       "name": "The Big Dumb Metric",
+      "rank": 36,
       "category": "Metrics",
       "context": "This antipattern occurs when organizations focus on a single, overly simplistic metric that doesn't provide meaningful insight into system health or performance. Common examples include focusing on metrics like \"CPU Usage\" or \"Request Count\" without understanding the broader context. These metrics are easy to collect but often fail to reflect the true state of the system, leading to misguided decisions. Teams may rely on these \"big dumb\" metrics because they are readily available or easy to interpret, but they can lead to a false sense of security or misdiagnosis of issues.",
       "problem": "When The Big Dumb Metric is used, it can lead to misleading conclusions, as a single metric might not capture the full complexity of system performance or health. For example, high CPU usage could be normal during peak traffic, or low request counts might not indicate a healthy system if request latency is high. Teams may overlook important issues by focusing on this singular metric, missing out on more nuanced problems like slow response times, database bottlenecks, or intermittent failures. Additionally, relying on just one metric can result in an inadequate monitoring strategy, where valuable insights from other metrics are ignored, leading to poor observability practices. This false sense of security may cause teams to believe the system is healthy when underlying problems persist, delaying responses during incidents. Furthermore, it increases the risk of alert fatigue, as teams become overwhelmed by false alarms based on this over-simplified metric, reducing their effectiveness in detecting and addressing real issues.",
@@ -704,6 +650,7 @@
     },
     {
       "name": "Relying Only on API Monitoring",
+      "rank": 35,
       "category": "Metrics",
       "context": "This antipattern occurs when organizations or teams rely exclusively on monitoring the APIs of their system without considering other aspects of their infrastructure or application. While API monitoring is essential, it only provides visibility into the availability and performance of API endpoints and does not cover other critical areas, such as system resource usage, internal service communication, or the health of other components in the ecosystem. Teams may focus on APIs because they are the primary interface for interacting with the system, but this narrow focus can result in blind spots in the system's observability.",
       "problem": "When teams rely solely on API monitoring, they face several limitations in understanding the overall health of the system. API monitoring primarily provides insights into how the API endpoints themselves are performing but doesn’t capture the internal health of the system, including database performance, service-to-service communication, or resource utilization. Issues like high CPU usage, memory leaks, disk space exhaustion, or network latency can impact API performance but may remain undetected if only the API is monitored. Moreover, this narrow focus can hinder the diagnosis of complex problems that affect backend systems or dependencies, making it harder to identify and resolve root causes of performance bottlenecks. Relying solely on API monitoring can also delay incident detection and response, as problems with dependent services or databases may go unnoticed until they directly affect the API. Additionally, it limits the ability to gain full insights into end-to-end user experience, as API monitoring typically misses client-side performance, network latency, and multi-service interactions.",
@@ -733,6 +680,7 @@
     },
   {
     "name": "Misunderstanding Metrics",
+    "rank": 27,
     "category": "Metrics",
     "context": "This antipattern occurs when teams or organizations incorrectly interpret or use metrics, leading to misguided decisions and actions. This could involve misunderstanding what a metric is actually measuring, how it should be used, or what it indicates about the system's health or performance. Teams may focus on the wrong metrics, misinterpret their meaning, or fail to understand their context, resulting in poor decision-making and ineffective actions. This often happens when teams don't have the right training, experience, or understanding of what specific metrics truly reflect about the system.",
     "problem": "When metrics are misunderstood, it can lead to several significant challenges for teams trying to maintain system health. Incorrect interpretations of metrics can cause teams to draw the wrong conclusions, leading to misprioritization of issues. They may focus on non-critical problems while overlooking key metrics that indicate more serious system components are in need of attention. Misunderstanding the meaning or significance of a metric can also create a false sense of security, making teams believe the system is performing well when, in reality, there are hidden issues. This lack of clarity results in improper prioritization, where resources are allocated to less important problems. Additionally, the inability to correctly interpret metrics can slow down troubleshooting efforts, delaying the resolution of actual issues and potentially impacting system reliability.",
@@ -760,6 +708,7 @@
   },
   {
     "name": "Overlooking Derived Metrics",
+    "rank": 28,
     "category": "Metrics",
     "context": "This antipattern occurs when teams fail to track or consider derived metrics that could provide deeper insights into the system's behavior. Derived metrics are calculated from raw metrics and offer a more meaningful understanding of system health, performance, or usage patterns. Examples of derived metrics include averages, percentiles, ratios, or aggregated statistics that provide more context to raw measurements. Organizations may overlook derived metrics because they focus on basic, raw data such as request count or response time without considering the more nuanced insights that derived metrics can offer.",
     "problem": "When teams overlook derived metrics, they may miss critical insights that help to accurately assess the system's health and performance. Raw metrics, such as basic latency or error counts, typically don't offer enough context to fully understand the system's behavior or detect issues in a timely manner. Derived metrics, which combine multiple raw metrics, can uncover trends and anomalies that might otherwise go unnoticed, providing a more holistic view of the system. Without these derived insights, teams may struggle to prioritize issues effectively, as raw metrics alone don't offer a clear indication of which problems are most pressing. Additionally, derived metrics often provide clearer, more actionable data, helping teams make informed decisions. By ignoring these metrics, teams risk missing larger systemic issues, such as architectural flaws, scalability problems, or performance bottlenecks, which could ultimately impact system reliability and performance.",
@@ -788,6 +737,7 @@
   },
   {
     "name": "Only Tracking What the Customer Sees",
+    "rank": 18,
     "category": "Metrics",
     "context": "This antipattern arises when teams focus solely on tracking user-facing metrics (such as response times, availability, or page load times) while neglecting critical internal metrics that reflect the underlying system's health and performance. It typically occurs because teams prioritize metrics that are visible to customers, assuming they are the only important indicators of system performance. This focus often leads to a lack of visibility into the internal workings of the system, which can result in undetected issues or a delayed response to underlying problems.",
     "problem": "When teams only track customer-facing metrics, they often overlook important internal issues that can affect system performance and stability. Focusing solely on metrics like frontend performance, response times, or customer-facing errors means that backend bottlenecks, resource exhaustion, or failures within internal services may go undetected. This narrow scope prevents teams from identifying systemic issues within the architecture or infrastructure, leading to delays in responding to underlying problems until they impact the end user. Furthermore, without visibility into the inner workings of the system, root cause analysis becomes challenging, as teams may not be able to trace issues to the specific services or components causing them. As a result, teams may have an over-simplified view of the system’s health, missing key indicators of trouble before they affect the user experience.",
@@ -816,6 +766,7 @@
   },
   {
     "name": "Excessive Metrics",
+    "rank": 17,
     "category": "Metrics",
     "context": "This antipattern occurs when teams track an excessive number of metrics, often without clear purpose or prioritization. While metrics are critical for observability, collecting too many can lead to data overload, making it difficult to focus on the most important indicators of system health and performance. Teams may fall into this trap by attempting to track every possible data point available, or they may feel compelled to collect metrics from every part of the system without analyzing whether they are truly useful. This can result in wasted resources, difficulty in identifying actionable insights, and slower system performance due to the overhead of monitoring.",
     "problem": "When teams track excessive metrics, several issues can arise. First, information overload occurs, as too many metrics make it difficult to identify and focus on the ones that truly matter. This can lead to wasted resources, as collecting and storing excessive metrics consumes unnecessary storage and processing power. The overwhelming number of metrics also makes it harder for teams to prioritize what's important, complicating decision-making. Furthermore, troubleshooting slows down, as finding the root cause of an issue becomes more challenging with so many metrics to sift through. Finally, excessive metrics often lead to a lack of actionable insights, as they are either too granular or irrelevant to the current system goals, making them unhelpful in driving meaningful decisions or actions.",
@@ -843,6 +794,7 @@
   },
   {
     "name": "Inadequate Monitoring Coverage",
+    "rank": 10,
     "category": "Metrics",
     "context": "This antipattern occurs when critical components or parts of the system are not properly monitored, leaving gaps in observability. These gaps may arise due to limited monitoring scope, focusing only on certain services or systems, or assuming that some parts of the system don't require attention. It often happens when teams prioritize monitoring for the most visible or high-traffic areas (like the frontend or primary APIs) while neglecting background services, infrastructure, or less obvious parts of the system that could lead to failures or degraded performance. Inadequate monitoring coverage leaves teams blind to potential issues and slows down the ability to detect and respond to incidents.",
     "problem": "When teams fail to adequately monitor all critical components of a system, several issues can arise. There may be blind spots in system observability, as key services or components, such as background jobs, databases, or auxiliary services, are not properly monitored. This leads to delayed issue detection, with problems in unmonitored areas going unnoticed until they escalate into major incidents. Incident response also becomes slower, as identifying the root cause of incidents without sufficient monitoring becomes more challenging. Moreover, inadequate monitoring coverage limits the ability to predict system failures or performance problems before they occur. Finally, neglecting to monitor key system areas can result in wasted resources, as teams may invest in monitoring tools and infrastructure that don't cover the most critical aspects of the system.",
@@ -870,6 +822,7 @@
   },
   {
     "name": "Forgetting the Customer",
+    "rank": 3,
     "category": "Metrics",
     "context": "This antipattern occurs when teams focus too much on internal system performance or infrastructure metrics and forget to monitor or account for the customer experience. It typically happens when there's an overemphasis on technical metrics (e.g., server health, database performance) at the expense of tracking the customer's perspective, such as application responsiveness, usability, or user satisfaction. The issue arises when teams lose sight of the fact that the ultimate goal of observability is to ensure that the system works effectively for the end user. This can lead to missed signals about how users are actually experiencing the system.",
     "problem": "When teams fail to monitor or prioritize customer-facing metrics, it leads to a lack of insight into the actual user experience. Teams may miss crucial metrics like response times, error rates, and user satisfaction, which could signal performance issues that directly affect users. While internal system metrics might show optimal performance, neglecting customer-facing data can cause teams to miss user impact and fail to detect problems until customers report them. This delay in identifying user-facing issues can lead to poor prioritization of technical fixes that don't align with improving the customer experience, ultimately resulting in a decline in customer satisfaction over time.",
@@ -897,6 +850,7 @@
   },
   {
     "name": "Inadequate Use of Logs for Metrics Collection",
+    "rank": 34,
     "category": "Logs",
     "context": "This antipattern occurs when logs are improperly or inefficiently used for metrics collection. Logs are often seen as a primary source of data for observability, but using them as a sole or primary means of collecting metrics can lead to significant inefficiencies. Teams might log detailed information but fail to extract the appropriate metrics from these logs, or they might rely on logs for metrics that could be more effectively tracked as dedicated metrics. The lack of structured logging and well-defined metric collection can cause challenges in analyzing and acting on performance-related data. This situation can arise due to a lack of understanding of the differences between logs and metrics, or due to teams trying to use logs as a catch-all for monitoring, rather than utilizing the right tool for the right purpose.",
     "problem": "When logs are inadequately used for metrics collection, teams face inefficiency due to the verbosity of logs, which may contain unnecessary information that makes it challenging to extract meaningful metrics. Logs capture data at a specific point in time and often aren't designed for real-time analysis, unlike dedicated metrics systems that can provide continuous insights. Without structured logging or sufficient context, it's difficult to correlate data across different systems, leading to missed opportunities to link metrics with events. Additionally, while logs may offer detailed data, they often lack the specific actionable metrics necessary to monitor system health and performance, resulting in storage and processing overhead.",
@@ -924,6 +878,7 @@
   },
   {
     "name": "Bad Sampling Intervals",
+    "rank": 2,
     "category": "General",
     "context": "This antipattern occurs when the sampling intervals used to collect metrics or monitoring data are poorly chosen, leading to either too much or too little data being captured. Sampling intervals refer to the frequency at which data points are collected for monitoring and metrics purposes. If the interval is too short, the system may generate too much data, leading to excessive resource consumption, storage costs, and potentially overwhelming the monitoring infrastructure. On the other hand, if the sampling interval is too long, the collected data may fail to capture important fluctuations or patterns in system performance, missing critical issues that occur in between sample periods. This problem typically arises when teams set sampling intervals based on convenience or technical limitations rather than on the specific needs of the system or the metrics being tracked.",
     "problem": "When sampling intervals are poorly chosen, several issues can occur. Excessive data collection may happen when the sampling frequency is too high, leading to an overwhelming volume of data that overloads storage systems and processing capabilities. On the other hand, long sampling intervals can result in inaccurate metrics, as critical short-term spikes, dips, or anomalies in performance may be missed. This also leads to wasted resources, as collecting more data than needed consumes unnecessary computational resources, bandwidth, and storage space. Inconsistent monitoring results can arise when sampling intervals vary across different parts of the system, leading to fragmented or misleading data. Finally, suboptimal sampling can hinder incident detection, causing delays or missed detections of incidents or performance degradations.",
@@ -951,6 +906,7 @@
   },
   {
     "name": "Long Trace Spans",
+    "rank": 37,
     "category": "Traces",
     "context": "This antipattern occurs when trace spans (units of work or transactions in distributed tracing systems) are too long, often capturing more data than necessary. In distributed tracing, trace spans are used to measure and track the duration of specific operations, requests, or interactions within a system. When these spans are overly long, they can introduce several issues, such as the inability to detect bottlenecks, poor performance insights, and data overload. This often happens when the scope of a trace spans too much of the system's operation, or when tracing is enabled for long-running tasks or processes that would be better split into smaller, more manageable spans. It can be a result of improper tracing configurations, lack of granularity in tracing setup, or poor design of distributed trace structure.",
     "problem": "When trace spans are too long, teams can encounter overwhelming trace data, making it difficult to extract meaningful insights. The excessive data can hinder the identification of bottlenecks, as long trace spans cover too many operations, masking the specific source of delays. Additionally, while these spans may show interactions between components, they fail to provide detailed insights into individual operations or time segments. Tracing long spans also leads to resource inefficiency, as maintaining context and collecting data over extended periods consumes significant resources. Moreover, correlating long trace spans with other observability data, such as logs or metrics, becomes more challenging, complicating troubleshooting and performance analysis.",
@@ -978,6 +934,7 @@
   },
   {
     "name": "Underestimating the Importance of Traces",
+    "rank": 19,
     "category": "Traces",
     "context": "This antipattern occurs when teams or organizations fail to fully appreciate the value of distributed tracing as part of their observability strategy. Traces are essential for providing visibility into the lifecycle of requests or transactions across multiple services, helping to detect bottlenecks, latency issues, and failures in a distributed system. However, some teams might underutilize or neglect tracing because they rely too heavily on metrics and logs, assuming that these are sufficient for monitoring system performance and troubleshooting issues. As a result, they miss out on the detailed insights that traces provide, leading to slower incident resolution, difficulty identifying root causes, and a less comprehensive understanding of system behavior.",
     "problem": "When the importance of traces is underestimated, several issues can arise. First, there is limited visibility, as teams are left with only a fragmented view of system behavior, making it difficult to understand how requests flow across services and where failures or slowdowns occur. This leads to an inability to identify latency bottlenecks, as metrics like response times or throughput may not provide enough detail to pinpoint specific performance issues, especially in complex, distributed systems. As a result, incident resolution times are longer, as traces provide valuable context that significantly speeds up troubleshooting. Without them, teams are forced to piece together information from logs and metrics, leading to slower issue identification and resolution. Furthermore, debugging becomes more complex without traces, as teams lack visibility into the full context of operations and interactions. Finally, neglecting tracing can result in missed opportunities for optimization, such as identifying long-running operations, inefficient service calls, or poorly performing database queries.",
@@ -1005,6 +962,7 @@
   },
   {
     "name": "No Consistent Trace ID",
+    "rank": 11,
     "category": "Traces",
     "context": "This antipattern occurs when a distributed system fails to propagate a consistent trace ID across all services and components involved in a transaction. A trace ID is a unique identifier assigned to a single request or transaction that travels through multiple services, allowing teams to trace its flow and diagnose issues. Without a consistent trace ID, it becomes difficult to correlate related logs, metrics, and traces across different services, making it harder to debug issues, track performance, or understand the full journey of a request. This is typically seen when services are not properly instrumented to propagate the trace ID across service boundaries or when manual correlation is needed to connect traces from different sources.",
     "problem": "When trace IDs are not consistently propagated, teams face difficulties in correlating data across logs, metrics, and traces, hindering a comprehensive view of system behavior. Troubleshooting times increase because engineers have to manually cross-reference data from multiple services without the benefit of a consistent trace ID. This results in incomplete visibility into the flow of requests across services, making performance analysis harder. Identifying performance bottlenecks becomes a challenge, and the risk of missing issues, such as slow response times or failures, rises, as real-time tracking of requests is not possible.",
@@ -1032,6 +990,7 @@
   },
   {
     "name": "Starting the Trace at the API Gateway is Overrated",
+    "rank": 29,
     "category": "Traces",
     "context": "This antipattern occurs when organizations rely solely on the API Gateway as the starting point for tracing requests across their system. The API Gateway often serves as the entry point for client requests, and many systems instrument it to start the trace when a request first hits the gateway. However, this can be problematic because it doesn't provide complete visibility into the user journey or the internal workings of services that occur before or beyond the gateway. Tracing should ideally capture the entire flow of a request, including the context of intermediate services that handle the request after the gateway or before it reaches the API Gateway, such as load balancers, edge services, or even the client itself. By only starting the trace at the API Gateway, teams may miss important parts of the transaction, leading to incomplete visibility.",
     "problem": "When traces only start at the API Gateway, teams lose visibility into the full request flow prior to this point. This results in the loss of context for issues occurring before the API Gateway, such as DNS resolution failures, proxy problems, or networking issues. By not tracing the entire journey of a request, teams may miss performance bottlenecks or optimization opportunities that exist before the API Gateway. It also complicates root cause analysis, as errors or performance issues originating in earlier stages become harder to pinpoint. Additionally, it may lead to false assumptions about the critical touchpoints in the request flow, narrowing the focus to the API Gateway and neglecting other important parts.",

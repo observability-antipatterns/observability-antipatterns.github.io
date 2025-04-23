@@ -6,42 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Observability Antipatterns</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 </head>
 
 <body>
-    <h1>A Catalog of Observability Antipatterns</h1>
+    <h1>A Catalog of Observability Anti-patterns</h1>
     <hr>
 
     <!-- Legenda de categorias -->
     <h3>Categories Legend</h3>
     <div class="categories-legend">
-        <div class="legend-item">
+        <div class="legend-item" data-category="Logs">
             <span class="logs"></span>
             <span>Logs</span>
         </div>
-        <div class="legend-item">
+        <div class="legend-item" data-category="Metrics">
             <span class="metrics"></span>
             <span>Metrics</span>
         </div>
-        <div class="legend-item">
+        <div class="legend-item" data-category="Traces">
             <span class="traces"></span>
             <span>Traces</span>
         </div>
-        <div class="legend-item">
+        <div class="legend-item" data-category="Alerts">
             <span class="alerts"></span>
             <span>Alerts</span>
         </div>
-        <div class="legend-item">
+        <div class="legend-item" data-category="Dashboards">
             <span class="dashboards"></span>
             <span>Dashboards</span>
         </div>
-        <div class="legend-item">
+        <div class="legend-item" data-category="General">
             <span class="general"></span>
             <span>General</span>
         </div>
     </div>
 
-    <h3>Filter the antipatterns</h3> <input type="text" id="search" placeholder="Enter a term ..."
+    <h3>Relevance Legend</h3>
+    <div class="relevance-legend">
+        <div class="relevance-item" data-relevance="high">
+            <span>High</span>
+        </div>
+        <div class="relevance-item" data-relevance="medium">
+            <span>Medium</span>
+        </div>
+        <div class="relevance-item" data-relevance="low">
+            <span>Low</span>
+        </div>
+    </div>
+
+    <br><button id="clear-filters">Clear</button>
+
+    <h3>Filter the anti-patterns</h3> <input type="text" id="search" placeholder="Enter a term ..."
         onkeyup="filterResults()">
     <div id="results"></div>
 
@@ -51,6 +68,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h3 id="modal-title">Title</h3>
+            <p id="modal-category">Content will be here...</p>
             <p id="modal-context">Content will be here...</p>
             <p id="modal-problem">Content will be here...</p>
             <p id="modal-example">Content will be here...</p>
@@ -81,11 +99,12 @@
         inadequate practices and apply more effective solutions.</p>
 
     <h2>How to Use This Catalog</h2>
-    <p>This catalog is organized by main observability categories, including Logs, Metrics, Traces, Alerts, Dashboards,
-        and General. Each antipattern is described in detail, including the context in which it
-        occurs, the problems it causes, practical examples, and recommended solutions to mitigate it.
-        When you find an antipattern that applies to your system, we recommend following the recommended solutions and
-        practices to fix it and prevent recurrence.</p>
+    <p>This catalog is organized by main observability categories, including Logs, Metrics, Traces, Alerts, Dashboards, and General. 
+        The catalog is sorted by relevance, helping you quickly identify the most impactful antipatterns. Each antipattern is described 
+        in detail, including the context in which it occurs, the problems it causes, practical examples, and recommended solutions to 
+        mitigate it. You can filter the catalog by category, relevance, or use the free text search field to find specific antipatterns. 
+        When you find an antipattern that applies to your system, we recommend following the recommended solutions and practices to fix 
+        it and prevent recurrence.</p>
 
     <h2>Template</h2>
 
@@ -120,7 +139,7 @@
     <h3>Consequences</h3>
     <ul>
         <li><strong>Positives</strong>: Benefits gained when addressing the anti-pattern properly.</li>
-        <li><strong>Challenges</strong>: Potential difficulties in implementing the recommended solutions, such as increased complexity or additional costs.</li>
+        <li><strong>Negatives</strong>: Potential difficulties in implementing the recommended solutions, such as increased complexity or additional costs.</li>
     </ul>
 
     <script src="script.js"></script>    
