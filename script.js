@@ -29,7 +29,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Adiciona o evento para abrir o modal ao clicar
                 div.addEventListener('click', () => {
-                    openModal(item.name, item.category, item.context, item.problem, item.example, item.recommended_solution, item.consequences); // Passando nome, contexto, problema e solução
+                    let relevance = "";
+		  
+		    if (item.rank >= 1 && item.rank <= 8) {
+		      relevance = "High";
+		    } else if (item.rank >= 9 && item.rank <= 19) {
+		      relevance = "Medium";
+		    } else {
+		      relevance = "Low";
+		    }
+		    
+		    
+    
+                    openModal(item.name, item.category, item.context, item.problem, item.example, item.recommended_solution, item.consequences, relevance); // Passando nome, contexto, problema e solução
                 });
 
                 resultsDiv.appendChild(div);
@@ -59,13 +71,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Função para abrir o modal com o conteúdo da caixinha
     // Função para abrir o modal
-    function openModal(name, category, context, problem, example, recommended_solution, consequences) {
+    function openModal(name, category, context, problem, example, recommended_solution, consequences, relevance) {
         document.getElementById("modal-title").textContent = name;
         document.getElementById("modal-category").innerHTML = `<strong>Category:</strong> ${category}`;
+        document.getElementById("modal-relevance").innerHTML = `<strong>Relevance:</strong> ${relevance}`;
         document.getElementById("modal-context").innerHTML = `<strong>Context:</strong> ${context}`;
         document.getElementById("modal-problem").innerHTML = `<strong>Problem:</strong> ${problem}`;
         document.getElementById("modal-example").innerHTML = `<strong>Example:</strong> ${example}`;
-        document.getElementById("modal-solution").innerHTML = `<strong>Solution:</strong> ${recommended_solution}`;
+
+        // Construindo a lista de consequências
+        let solutionsHTML = "<strong>Solutions:</strong><ul>";
+        if (recommended_solution.length > 0) {
+            recommended_solution.forEach(item => {
+                solutionsHTML += `<li>${item}</li>`;
+            });
+        }
+        solutionsHTML += "</ul>";
+
+
+        document.getElementById("modal-solution").innerHTML = solutionsHTML;
 
         // Construindo a lista de consequências
         let consequencesHTML = "<strong>Consequences:</strong><ul>";

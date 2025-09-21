@@ -34,13 +34,7 @@
       "problem": "Relying solely on time-series graphs can lead to several issues, including difficulty in correlating multiple data sources, such as logs, traces, and alerts. This approach may also limit the ability to detect anomalies that are not apparent in a time-series representation. Engineers face inefficient troubleshooting, as they must manually interpret trends instead of relying on more direct indicators. Additionally, the cognitive load increases when identifying patterns across different system components, making it harder to quickly identify and resolve issues.",
       "example": "A dashboard displays CPU utilization over time but lacks contextual information such as which services are affected, what logs were generated during spikes, or whether similar incidents have occurred in the past. As a result, engineers must switch between multiple tools and manually correlate data to diagnose performance issues.",
       "recommended_solution": [
-        "Incorporate diverse visualization techniques, such as:",
-        {
-          "heatmaps": "for identifying patterns across multiple components.",
-          "tables": "for displaying key metrics in a structured format.",
-          "topological_or_dependency_maps": "for understanding service interactions.",
-          "correlated_logs_and_traces": "to provide context for performance anomalies."
-        },
+        "Incorporate diverse visualization techniques, such as: heatmaps (for identifying patterns across multiple components), tables (for displaying key metrics in a structured format), dependency maps (for understanding service interactions).",
         "Ensure dashboards provide actionable insights rather than just raw data.",
         "Design views tailored to specific use cases, such as incident response, capacity planning, or SLA monitoring.",
         "Regularly review and refine dashboard layouts to improve usability and effectiveness."
